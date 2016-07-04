@@ -18,12 +18,12 @@ ga('send', 'pageview');</script></head><body><header><div class="content-wrap"><
 
 <h3 id="calling-a-schema">Calling a Schema</h3>
 
-<p>Calling a schema will apply all its rules to the input. High-level rules defined with <code>rule</code> API are applied in a second step and they are guarded, which means if the values they depend on are not valid, nothing will crash and a high-level rule will not be applied.</p>
+<p>Calling a schema will apply all its rules to the input. High-level rules defined with the <code>rule</code> API are applied in a second step and they are guarded, which means if the values they depend on are not valid, nothing will crash and a high-level rule will not be applied.</p>
 
 <p>Example:</p>
 <pre class="syntax ruby"><code><span class="n">schema</span> <span class="o">=</span> <span class="no">Dry</span><span class="o">::</span><span class="no">Validation</span><span class="o">.</span><span class="no">Schema</span> <span class="k">do</span>
-  <span class="n">key</span><span class="p">(</span><span class="ss">:email</span><span class="p">).</span><span class="nf">required</span>
-  <span class="n">key</span><span class="p">(</span><span class="ss">:age</span><span class="p">).</span><span class="nf">required</span>
+  <span class="n">required</span><span class="p">(</span><span class="ss">:email</span><span class="p">).</span><span class="nf">filled</span>
+  <span class="n">required</span><span class="p">(</span><span class="ss">:age</span><span class="p">).</span><span class="nf">filled</span>
 <span class="k">end</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">schema</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="ss">email: </span><span class="s1">'jane@doe.org'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">21</span><span class="p">)</span>

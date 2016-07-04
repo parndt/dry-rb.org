@@ -15,9 +15,9 @@ we&rsquo;re going to use <code>dry-container</code>:</p>
 <pre class="syntax ruby"><code><span class="c1"># set up your container</span>
 <span class="n">my_container</span> <span class="o">=</span> <span class="no">Dry</span><span class="o">::</span><span class="no">Container</span><span class="p">.</span><span class="nf">new</span>
 
-<span class="n">my_container</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="ss">:data_store</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="no">DataStore</span><span class="p">.</span><span class="nf">new</span> <span class="p">})</span>
-<span class="n">my_container</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="ss">:user_repository</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">container</span><span class="p">[</span><span class="ss">:data_store</span><span class="p">][</span><span class="ss">:users</span><span class="p">]</span> <span class="p">})</span>
-<span class="n">my_container</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="ss">:persist_user</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="no">PersistUser</span><span class="p">.</span><span class="nf">new</span> <span class="p">})</span>
+<span class="n">my_container</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="s2">"data_store"</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="no">DataStore</span><span class="p">.</span><span class="nf">new</span> <span class="p">})</span>
+<span class="n">my_container</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="s2">"user_repository"</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">container</span><span class="p">[</span><span class="s2">"data_store"</span><span class="p">][</span><span class="ss">:users</span><span class="p">]</span> <span class="p">})</span>
+<span class="n">my_container</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="s2">"persist_user"</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="no">PersistUser</span><span class="p">.</span><span class="nf">new</span> <span class="p">})</span>
 
 <span class="c1"># set up your auto-injection function</span>
 <span class="no">AutoInject</span> <span class="o">=</span> <span class="no">Dry</span><span class="o">::</span><span class="no">AutoInject</span><span class="p">(</span><span class="n">my_container</span><span class="p">)</span>
@@ -25,14 +25,14 @@ we&rsquo;re going to use <code>dry-container</code>:</p>
 <span class="c1"># then simply include it in your class providing which dependencies should be</span>
 <span class="c1"># injected automatically from the configured container</span>
 <span class="k">class</span> <span class="nc">PersistUser</span>
-  <span class="kp">include</span> <span class="no">AutoInject</span><span class="p">[</span><span class="ss">:user_repository</span><span class="p">]</span>
+  <span class="kp">include</span> <span class="no">AutoInject</span><span class="p">[</span><span class="s2">"user_repository"</span><span class="p">]</span>
 
   <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="n">user_repository</span> <span class="o">&lt;&lt;</span> <span class="n">user</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">persist_user</span> <span class="o">=</span> <span class="n">my_container</span><span class="p">[</span><span class="ss">:persist_user</span><span class="p">]</span>
+<span class="n">persist_user</span> <span class="o">=</span> <span class="n">my_container</span><span class="p">[</span><span class="s2">"persist_user"</span><span class="p">]</span>
 
 <span class="n">persist_user</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="ss">name: </span><span class="s1">'Jane'</span><span class="p">)</span>
 </code></pre>

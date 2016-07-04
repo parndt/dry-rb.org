@@ -8,8 +8,8 @@ ga('send', 'pageview');</script></head><body><header><div class="content-wrap"><
 <pre class="syntax ruby"><code><span class="n">schema</span> <span class="o">=</span> <span class="no">Dry</span><span class="o">::</span><span class="no">Validation</span><span class="o">.</span><span class="no">Schema</span> <span class="k">do</span>
   <span class="n">each</span> <span class="k">do</span>
     <span class="n">schema</span> <span class="k">do</span>
-      <span class="n">key</span><span class="p">(</span><span class="ss">:name</span><span class="p">).</span><span class="nf">required</span>
-      <span class="n">key</span><span class="p">(</span><span class="ss">:age</span><span class="p">).</span><span class="nf">required</span>
+      <span class="n">required</span><span class="p">(</span><span class="ss">:name</span><span class="p">).</span><span class="nf">filled</span><span class="p">(</span><span class="ss">:str?</span><span class="p">)</span>
+      <span class="n">required</span><span class="p">(</span><span class="ss">:age</span><span class="p">).</span><span class="nf">filled</span><span class="p">(</span><span class="ss">:int?</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>

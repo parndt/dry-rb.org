@@ -23,7 +23,7 @@ ga('send', 'pageview');</script></head><body><header><div class="content-wrap"><
 
 <h3 id="defining-a-transaction">Defining a transaction</h3>
 
-<p>Define a transaction to bring your opererations together:</p>
+<p>Define a transaction to bring your operations together:</p>
 <pre class="syntax ruby"><code><span class="n">save_user</span> <span class="o">=</span> <span class="no">Dry</span><span class="o">.</span><span class="no">Transaction</span><span class="p">(</span><span class="ss">container: </span><span class="no">Container</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">step</span> <span class="ss">:process</span>
   <span class="n">step</span> <span class="ss">:validate</span>
