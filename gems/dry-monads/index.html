@@ -4,7 +4,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-2573270-8', 'auto');
-ga('send', 'pageview');</script></head><body><header><div class="content-wrap"><nav class="main-nav"><ul class="main-nav__list"><li class="main-nav__logo"><a href="/">Home</a></li><li><a href="/gems">Gems</a></li><li><a href="http://github.com/dry-rb">GitHub</a></li><li><a href="https://gitter.im/dry-rb/chat">Gitter</a></li></ul></nav><div class="intro-page"><h1>dry-monads</h1></div></div></header><div class="row"><div class="content-wrap"><aside class="sidebar"><ul><li><ul><li><a class="active" href="/gems/dry-monads/">Introduction & Usage</a></li></ul></li></ul></aside><article class="gem-article"><h2>Introduction & Usage</h2><h2 id="introduction">Introduction</h2>
+ga('send', 'pageview');</script></head><body><header><div class="content-wrap"><nav class="main-nav"><ul class="main-nav__list"><li class="main-nav__logo"><a href="/">Home</a></li><li><a href="/gems">Gems</a></li><li><a href="http://github.com/dry-rb">GitHub</a></li><li><a href="https://discuss.dry-rb.org">Discuss</a></li><li><a href="https://gitter.im/dry-rb/chat">Gitter</a></li></ul></nav><div class="intro-page"><h1>dry-monads</h1></div></div></header><div class="row"><div class="content-wrap"><aside class="sidebar"><ul><li><ul><li><a class="active" href="/gems/dry-monads/">Introduction & Usage</a></li></ul></li></ul></aside><article class="gem-article"><h2>Introduction & Usage</h2><h2 id="introduction">Introduction</h2>
 
 <p><code>dry-monads</code> is a set of common monads for Ruby.</p>
 
@@ -16,7 +16,7 @@ ga('send', 'pageview');</script></head><body><header><div class="content-wrap"><
 
 <h3 id="maybe-monad">Maybe monad</h3>
 
-<p>The <code>Maybe</code> monad is used when a series of computations that could return <code>nil</code> at any point.</p>
+<p>The <code>Maybe</code> monad is used when a series of computations could return <code>nil</code> at any point.</p>
 
 <h4 id="bind"><code>bind</code></h4>
 
@@ -127,7 +127,7 @@ can be thought of as &ldquo;everything went right&rdquo; and the <code>Left</cod
 <span class="n">result</span> <span class="c1"># =&gt; Right(12)</span>
 <span class="n">result</span><span class="p">.</span><span class="nf">value</span> <span class="c1"># =&gt; 12</span>
 
-<span class="c1"># If if failed in the first block</span>
+<span class="c1"># If it failed in the first block</span>
 <span class="n">c</span><span class="p">.</span><span class="nf">input</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">calculate</span>
 <span class="n">result</span> <span class="c1"># =&gt; Left("value was less than 1")</span>
@@ -158,7 +158,7 @@ can be thought of as &ldquo;everything went right&rdquo; and the <code>Left</cod
 <span class="c1"># If it did not</span>
 <span class="n">result</span> <span class="c1"># =&gt; Left("wrong")</span>
 
-<span class="c1"># #fmap accepts a proc as well as #bind</span>
+<span class="c1"># #fmap accepts a proc, just like #bind</span>
 
 <span class="n">upcase</span> <span class="o">=</span> <span class="ss">:upcase</span><span class="p">.</span><span class="nf">to_proc</span>
 
@@ -229,7 +229,7 @@ can be thought of as &ldquo;everything went right&rdquo; and the <code>Left</cod
 <span class="k">end</span>
 </code></pre>
 
-<p>It is better you to pass a list of expected exceptions which you sure you can process. Catching exceptions of all types is considered as bad practice.</p>
+<p>It is better if you pass a list of expected exceptions which you are sure you can process. Catching exceptions of all types is considered bad practice.</p>
 
 <p><code>Try</code> monad consists of two types: <code>Success</code> and <code>Failure</code>. The first is returned when code did not raise an error and the second is returned when the error was captured.</p>
 
